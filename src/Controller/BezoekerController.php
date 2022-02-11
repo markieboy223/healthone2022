@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -44,6 +45,20 @@ class BezoekerController extends AbstractController
 
         return $this->render('bezoeker/category.html.twig', [
             'category' => $category,
+        ]);
+    }
+    /**
+     * @Route("/product/{id}", name="product")
+     */
+    public function productAction($id)
+    {
+        $product=$this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($id);
+        $reviews=$product->getReviews();
+
+        return $this->render('bezoeker/product.html.twig', [
+            'product' => $product, 'reviews'=>$reviews
         ]);
     }
 }
