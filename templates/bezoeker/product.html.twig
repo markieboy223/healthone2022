@@ -50,6 +50,7 @@
                     <img alt="no picture" class="product-img img-responsive center-block" src="{{ asset(product.picture)}}"/>
                 </a>
                 <div class="card-title mb-3"><h1>{{ product.name }}</h1></div>
+                <div class="card-title mb-3"><p>{{ product.description }}</p></div>
             </div>
             {% for review in product.reviews %}
                 <div class="d-block p-1">
